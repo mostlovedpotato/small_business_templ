@@ -10,6 +10,7 @@ import {
   FaTwitter,
 } from 'react-icons/fa'
 
+import {Link} from 'react-scroll'
 
 const NavBar = () => {
 
@@ -39,7 +40,7 @@ const NavBar = () => {
     ]
 
   return (
-    <div className='w-screen h-20 z-20 fixed shadow-md'>
+    <div className='w-screen h-20 z-20 fixed shadow-md bg-white/80'>
         <div className='px-3 flex items-center justify-between w-full h-full'>
             <div className='flex items-center'>
                 <h1 className='text-4xl font-bold '>Care</h1>
@@ -47,7 +48,9 @@ const NavBar = () => {
             <ul className='hidden md:flex'>
                 {
                     links.map(({id,link})=>(
-                        <li key={id} className='hover:scale-110 duration-300 capitalize px-4 py-1 cursor-pointer inline hover:border-b-4 hover:border-green-600'>{link}</li>
+                        <li key={id} className='hover:scale-110 duration-300 capitalize px-4 py-1 cursor-pointer inline hover:border-b-4 hover:border-green-600'>
+                            <Link to={link} smooth duration={500}> {link}</Link>
+                        </li>
                     ))
                 }
             </ul>
@@ -78,7 +81,9 @@ const NavBar = () => {
                         <ul className='capitalize'>
                         {
                             links.map(({id,link})=>(
-                                <li key={id} className="py-2 text-2xl cursor-pointer text-bold tracking-wider">{link}</li>
+                                <li key={id} className="py-2 text-2xl cursor-pointer text-bold tracking-wider">
+                                    <Link onClick={()=>{setNav(!nav)}} offset={-50} to={link} smooth duration={500}>{link}</Link>
+                                </li>
                             ))
                         }
                     </ul>
